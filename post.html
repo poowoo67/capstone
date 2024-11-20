@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>게시글 상세 보기</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <ul class="nav-left">
+        <li><a href="index.html">홈</a></li>
+        <li><a href="question-board.html">질문 게시판</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="post-content-container">
+      <div class="post-content">
+        <h2 id="post-title">게시글 제목</h2>
+        <p id="post-content">게시글 내용이 여기에 표시됩니다.</p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // 임시 데이터 (서버가 연결되면 서버에서 받아오도록 대체 가능)
+    const posts = {
+      "1": { title: "첫 번째 질문", content: "첫 번째 질문의 내용입니다." },
+      "2": { title: "두 번째 질문", content: "두 번째 질문의 내용입니다." },
+      "3": { title: "세 번째 질문", content: "세 번째 질문의 내용입니다." }
+    };
+
+    // URL에서 id 파라미터 가져오기
+    const urlParams = new URLSearchParams(window.location.search);
+    const postId = urlParams.get('id');
+
+    // 게시글 내용 표시
+    if (posts[postId]) {
+      document.getElementById("post-title").textContent = posts[postId].title;
+      document.getElementById("post-content").textContent = posts[postId].content;
+    } else {
+      document.getElementById("post-title").textContent = "게시글을 찾을 수 없습니다.";
+      document.getElementById("post-content").textContent = "";
+    }
+  </script>
+    <!-- 퀴즈 및 영상 바로가기 섹션 -->
+    <div class="center-links">
+        <a href="quiztest.html" class="btn-link">퀴즈로 바로가기</a>
+        <a href="educationVideo.html" class="btn-link">영상으로 바로가기</a>
+      </div>
+    
+</body>
+</html>

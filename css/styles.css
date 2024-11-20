@@ -1,0 +1,630 @@
+
+@font-face { /*학교안심 곧은제목체*/
+  font-family: 'HakgyoansimGodeunjemokB';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimGodeunjemokB.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {/*강원교육튼튼체*/
+  font-family: 'GangwonEduPowerExtraBoldA';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEduPowerExtraBoldA.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+} 
+/* 공통 스타일 */
+:root {
+  --box-padding: 15px;
+  --box-border: 1px solid #ddd;
+  --box-radius: 5px;
+  --box-background: #f9f9f9;
+
+  --bg-img: url('');
+  --nav-img: url('../사진/크롭이미지.png');
+  --font-H: 'HakgyoansimGodeunjemokB', sans-serif;
+  --font-G: 'GangwonEduPowerExtraBoldA';
+}
+
+/* 로그인 박스 스타일 (login.html에만 적용) */
+.login-box {
+  width: 300px;
+  margin: 100px auto; /* 중앙 배치 */
+  padding: var(--box-padding);
+  border: var(--box-border);
+  border-radius: var(--box-radius);
+  background-color: var(--box-background);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.login-box h2 {
+  margin-bottom: 20px;
+}
+
+.login-box form input[type="email"],
+.login-box form input[type="password"] {
+  width: 250px; /* 로그인 입력창 너비 조정 */
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.login-box form button {
+  width: 250px; /* 로그인 버튼 너비 조정 */
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.login-box form button:hover {
+  background-color: #45a049;
+}
+
+.login-box .login-links {
+  margin-top: 15px;
+}
+
+.login-box .login-links a {
+  display: block;
+  color: #007bff;
+  text-decoration: none;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.login-box .login-links a:hover {
+  text-decoration: underline;
+}
+
+/* 검색창 스타일 */
+.search-bar {
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.search-bar input[type="text"] {
+  width: 300px; /* 검색창 너비 유지 */
+  padding: 10px;
+  font-size: 16px;
+}
+
+.search-bar button {
+  padding: 10px;
+  font-size: 16px;
+}
+
+
+/* 회원가입 박스 스타일 (signup.html에만 적용) */
+.signup-box {
+  width: 300px;
+  margin: 100px auto; /* 중앙 배치 */
+  padding: var(--box-padding);
+  border: var(--box-border);
+  border-radius: var(--box-radius);
+  background-color: var(--box-background);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.signup-box h2 {
+  margin-bottom: 20px;
+}
+
+.signup-box form input[type="email"],
+.signup-box form input[type="password"] {
+  width: 250px; /* 회원가입 입력창 너비 조정 */
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.signup-box form button {
+  width: 250px; /* 회원가입 버튼 너비 조정 */
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.signup-box form button:hover {
+  background-color: #45a049;
+}
+
+/* 기본 스타일 유지 - index.html 레이아웃 */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background: center / contain repeat var(--nav-img);
+
+  
+  color: white;
+  font-family: 'HakgyoansimGodeunjemokB';
+  font-size: 1.5em; /* 텍스트 크기 */
+  text-shadow: 2px 2px 4px rgba(0.5, 0.5, 0.5, 0.5); /* 그림자 효과 */
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+}
+
+.banner {
+  position: relative;
+  background: #f0f0f0;
+  padding: 5px;
+  text-align: center;
+  font-size: 24px;
+}
+
+.banner .full {
+  width: 80%; /* 웹 페이지 가로 길이의 80%로 이미지 너비 설정 */
+  height: auto; /* 이미지 비율 유지 */
+}
+
+.banner .cropped { /*사용 조건이 있어서 글씨를 띄울 예정이라면 사용이 어려울듯함*/
+  width: 100%; /* 배너의 너비에 맞춤 */
+  height: 20px; 
+  object-fit: cover; /* 이미지 비율 유지하며 채움 */
+  object-position: top; /* 이미지의 윗부분만 표시 */
+  margin-bottom: 20px; /* 이미지 사이 간격 */
+}
+
+.banner .text-overlay { /*배너 위에 뜰 글씨..*/
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-family: 'GangwonEduPowerExtraBoldA';
+  font-size: 1.5em; /* 텍스트 크기 */
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0.5, 0.5, 0.5, 0.5); /* 그림자 효과 */
+}
+
+.weather-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.weather-controls-box {
+  width: 100%;
+  max-width: 850px;
+  padding: var(--box-padding);
+  border: var(--box-border);
+  border-radius: var(--box-radius);
+  background-color: var(--box-background);
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.weather-controls-box input[type="text"] {
+  padding: 10px;
+  font-size: 16px;
+  width: 200px;
+}
+
+.iframe-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 850px;
+  padding: var(--box-padding);
+  border: var(--box-border);
+  border-radius: var(--box-radius);
+  background-color: var(--box-background);
+}
+
+.iframe-container iframe {
+  width: 100%;
+  height: 600px;
+  border: none;
+}
+
+
+/* 비디오 페이지 레이아웃 */
+.video-page {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.main-video {
+  flex: 2;
+  max-width: 800px;
+  padding-left: 15%;
+}
+
+.main-video video {
+  width: 100%;
+  height: auto;
+}
+
+.video-list {
+  flex: 1;
+  margin-left: 10%;
+}
+
+.video-list h3 {
+  margin-top: 0;
+}
+
+.video-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.video-list li {
+  margin-bottom: 10px;
+}
+
+.video-list a {
+  text-decoration: none;
+  color: #333;
+}
+
+.video-list a:hover {
+  color: #007bff;
+}
+
+/* 중앙 정렬 링크 스타일 */
+.center-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 40px 0;
+}
+
+.btn-link {
+  display: inline-block;
+  padding: 12px 20px;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.btn-link:hover {
+  background-color: #45a049;
+}
+
+/* 중앙 퀴즈 상자 스타일 */
+.main-quiz {
+  flex: 2;
+  max-width: 800px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+#quizBox {
+  width: 100%;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: var(--box-background);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  position: relative;
+}
+
+.next-btn {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  padding: 8px 12px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.next-btn:hover {
+  background-color: #45a049;
+}
+
+/* 퀴즈 목록 */
+.quiz-list {
+  flex: 1;
+  margin-left: 20px;
+}
+
+.quiz-list h3 {
+  margin-top: 0;
+}
+
+.quiz-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.quiz-list li {
+  margin-bottom: 10px;
+}
+
+.quiz-list a {
+  text-decoration: none;
+  color: #333;
+}
+
+.quiz-list a:hover {
+  color: #007bff;
+}
+
+/* 마이페이지 상단 배너 스타일 */
+.mypage-banner {
+  background-color: #f0f0f0;
+  padding: 50px;
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* 프로필 섹션 스타일 */
+.profile-container {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+
+.profile-section {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.profile-picture {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.profile-picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-info h2 {
+  margin: 0;
+}
+
+.profile-info p {
+  margin-top: 5px;
+  font-size: 14px;
+  color: #666;
+}
+
+/* 프로필 수정 버튼 스타일 */
+.profile-edit-btn {
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-left: 20px;
+}
+
+.profile-edit-btn:hover {
+  background-color: #0056b3;
+}
+
+/* 정보 박스 섹션 스타일 */
+.info-boxes {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.info-box {
+  flex: 1;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  background-color: #f9f9f9;
+}
+
+.info-box h3 {
+  margin-top: 0;
+}
+
+.info-box p {
+  color: #666;
+}
+
+/* 최근 본 영상 섹션 스타일 */
+.recent-videos {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.recent-videos h3 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.recent-video-boxes {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.video-box {
+  width: 100px;
+  height: 100px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f0f0f0;
+  text-decoration: none;
+  color: #333;
+}
+
+#noRecentVideos {
+  display: none;
+  font-size: 18px;
+  color: #888;
+}
+
+
+/* 사는 지역 입력 및 기상청 iframe 섹션 스타일 */
+.location-weather {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.location-weather h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.location-input {
+  padding: 10px;
+  font-size: 16px;
+  width: 250px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.weather-iframe-container {
+  display: flex;
+  justify-content: center;
+  padding: var(--box-padding);
+  border: var(--box-border);
+  border-radius: var(--box-radius);
+  background-color: var(--box-background);
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.weather-iframe-container iframe {
+  width: 100%;
+  height: 600px;
+  border: none;
+}
+
+/* 질문 게시판 박스 스타일 */
+.question-board-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin: 40px auto;
+  padding: var(--box-padding);
+  border: var(--box-border);
+  border-radius: var(--box-radius);
+  background-color: var(--box-background);
+  max-width: 600px;
+}
+
+.question-list-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.question-list-box ul li {
+  margin: 10px 0;
+}
+
+.question-list-box ul li a {
+  text-decoration: none;
+  color: #333;
+}
+
+.question-list-box ul li a:hover {
+  color: #007bff;
+}
+/* 게시판 헤더 스타일 */
+.board-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+/* 게시글 작성 버튼 스타일  */
+.write-btn {
+  display: inline-block;
+  padding: 10px 15px;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  text-align: center;
+  margin-left: auto; 
+}
+.write-btn:hover {
+  background-color: #45a049;
+}
+
+/* 게시글 상세보기 스타일 */
+.post-content-container {
+  display: flex;
+  justify-content: center;
+  margin: 40px auto;
+  padding: var(--box-padding);
+  border: var(--box-border);
+  border-radius: var(--box-radius);
+  background-color: var(--box-background);
+  max-width: 600px;
+}
+
+.post-content h2 {
+  text-align: center;
+  margin-top: 0;
+}
+
+.post-content p {
+  text-align: left;
+  font-size: 16px;
+  line-height: 1.5;
+}
+

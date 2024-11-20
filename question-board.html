@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>질문 게시판</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- 헤더 -->
+  <header>
+    <nav class="navbar">
+      <ul class="nav-left">
+        <li><a href="index.html">홈</a></li>
+        <li><a href="question-board.html">질문 게시판</a></li>
+      </ul>
+      <ul class="nav-right">
+        <li><a href="login.html">로그인</a></li>
+        <li><a href="signup.html">회원가입</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- 배너 및 검색창 -->
+  <section class="banner"><img src="./사진/크롭이미지.png" class="full">
+    <div class="text-overlay"><h5>겨울철안전사고대응및재난대피요령</h5></div></section>
+  <div class="search-bar">
+    <input type="text" placeholder="검색어를 입력하세요">
+    <button onclick="search()">검색</button>
+  </div>
+
+  <!-- 게시글 작성 버튼 -->
+  <div class="write-btn-container">
+    <a href="post.html" class="write-btn">게시글 작성</a>
+  </div>
+
+  <!-- 질문 게시판 -->
+  <main>
+    <section class="question-board-container">
+      <h2>게시판</h2>
+      <div class="question-list-box">
+        <ul>
+          <li><a href="post.html?id=1">첫 번째 게시글</a></li>
+          <li><a href="post.html?id=2">두 번째 게시글</a></li>
+          <li><a href="post.html?id=3">세 번째 게시글</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    function search() {
+      const query = document.querySelector('.search-bar input').value;
+      window.location.href = `search-results.html?query=${encodeURIComponent(query)}`;
+    }
+  </script>
+</body>
+</html>

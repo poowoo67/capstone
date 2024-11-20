@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>홈 페이지</title>
+  <link rel="icon" type="image/png" href="./사진/배경투명화인사.png"/>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <!-- 헤더 -->
+  <header>
+    <nav class="navbar">
+      <ul class="nav-left">
+        <li><a href="index.html">홈</a></li>
+        <li><a href="question-board.html">질문 게시판</a></li>
+      </ul>
+      <ul class="nav-right">
+        <li><a href="login.html">로그인</a></li>
+        <li><a href="signup.html">회원가입</a></li>
+        <li><a href="mypage.html">마이페이지</a></li>
+      </ul>
+    </nav>
+  
+    <section class="banner">
+      <img src="./사진/크롭이미지.png" class="full">
+      <div class="text-overlay"><h5>겨울철안전사고대응및재난대피요령</h5></div>
+    </section>
+  </header>
+  
+
+  <!-- 검색창 -->
+  <div class="search-bar">
+    <input type="text" placeholder="검색어를 입력하세요">
+    <button onclick="search()">검색</button>
+  </div>
+
+  <!-- 배너 -->
+  <section class="banner">
+      <img src="./사진/기본자세.png" class="full">
+      <div class="text-overlay">움직이는 배너로 구현할 예정</div>
+
+  </section>
+
+  <!-- 날씨 정보 섹션 -->
+  <section class="weather-section">
+    <!-- 날씨 정보 설정 박스 --><!-- 입력받은 지역을 행정동 기준으로 정리해 행정동코드 링크삽입하는 방법?-->
+    <div class="weather-controls-box">
+      <a href="https://www.weather.go.kr/w/index.do" target="_blank">기상청 바로가기</a>
+      <input type="text" placeholder="지역 설정">
+    </div>
+    
+    <!-- 아이프레임 -->
+    <div class="iframe-container">
+      <iframe src="https://www.weather.go.kr/w/index.do" title="기상청 날씨 정보"></iframe>
+    </div>
+  </section>
+
+  <script src="js/main.js"></script>
+
+
+  <!-- 퀴즈 및 영상 바로가기 섹션 -->
+  <div class="center-links">
+    <a href="quiztest.html" class="btn-link">퀴즈 바로가기</a>
+    <a href="educationVideo.html" class="btn-link">영상 바로가기</a>
+  </div>
+</body>
+</html>

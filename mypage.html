@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>마이페이지</title>
+  <link rel="icon" type="image/png" href="./사진/배경투명화인사.png"/>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- 상단 배너 -->
+  <header>
+    <nav class="navbar">
+      <ul class="nav-left">
+        <li><a href="index.html">홈</a></li>
+        <li><a href="questions.html">질문 게시판</a></li>
+      </ul>
+    </nav>
+    <section class="mypage-banner">
+      <img src="./사진/크롭이미지.png" class="full">
+    <div class="text-overlay"><h5>겨울철안전사고대응및재난대피요령</h5></div>
+    </section>
+  </header>
+
+  <!-- 프로필 섹션 -->
+  <section class="profile-container">
+    <div class="profile-section">
+      <div class="profile-picture">
+        <img src="images/default-profile.png" alt="프로필 사진" id="profileImg">
+      </div>
+      <div class="profile-info">
+        <h2 id="nickname">사용자 닉네임</h2>
+        <p id="bio">여기에 자기소개를 작성하세요.</p>
+      </div>
+    </div>
+    <!-- 프로필 수정 버튼 -->
+    <button class="profile-edit-btn" onclick="editProfile()">프로필 수정</button>
+  </section>
+
+  <!-- 정보 박스 섹션 -->
+  <section class="info-boxes">
+    <div class="info-box" id="quizScore">
+      <h3>Quiz 성적</h3>
+      <p>로그인 후 확인할 수 있습니다.</p>
+    </div>
+    <div class="info-box" id="userPosts">
+      <h3>내가 작성한 게시글</h3>
+      <p>로그인 후 확인할 수 있습니다.</p>
+    </div>
+    <div class="info-box" id="likedPosts">
+      <h3>좋아요한 게시글</h3>
+      <p>로그인 후 확인할 수 있습니다.</p>
+    </div>
+  </section>
+
+  <!-- 최근 본 영상 섹션 -->
+  <section class="recent-videos">
+    <h3>최근 본 영상</h3>
+    <div class="recent-video-boxes">
+      <p id="noRecentVideos">최근 본 영상이 없습니다.</p>
+      <a href="educationVideos/video1.html" class="video-box" id="videoBox1">🎬</a>
+      <a href="educationVideos/video2.html" class="video-box" id="videoBox2">🎬</a>
+      <a href="educationVideos/video3.html" class="video-box" id="videoBox3">🎬</a>
+    </div>
+  </section>
+
+  <!-- 사는 지역 입력 및 기상청 iframe 섹션 -->
+  <section class="location-weather">
+    <h3>사는 지역 입력</h3>
+    <input type="text" id="locationInput" placeholder="OO동으로 입력해주세요" class="location-input">
+    <button onclick="submitLocation()">확인</button>
+    <div class="weather-iframe-container">
+      <iframe id="weatherIframe" src="https://www.weather.go.kr/w/index.do" title="기상청 날씨 정보"></iframe>
+    </div>
+  </section>
+
+  <script>
+    function editProfile() {
+      alert("프로필 수정 기능은 아직 구현되지 않았습니다.");
+    }
+
+    const recentVideos = []; // 백엔드에서 받을 데이터 대체용
+    const videoBoxes = document.querySelectorAll('.video-box');
+    const noRecentVideosMessage = document.getElementById("noRecentVideos");
+
+    if (recentVideos.length === 0) {
+      videoBoxes.forEach(box => box.style.display = 'none');
+      noRecentVideosMessage.style.display = 'block';
+    } else {
+      noRecentVideosMessage.style.display = 'none';
+      videoBoxes.forEach((box, index) => {
+        if (index < recentVideos.length) {
+          box.href = recentVideos[index].url; 
+          box.style.display = 'inline-block';
+        } else {
+          box.style.display = 'none';
+        }
+      });
+    }
+
+    // 지역 정보 전송 함수
+    function submitLocation() {
+      const location = document.getElementById("locationInput").value;
+
+      // 예시: 백엔드에서 행정동 코드 변환 및 iframe src 업데이트 처리
+      fetch(`/getAdministrativeCode?location=${encodeURIComponent(location)}`)
+        .then(response => response.json())
+        .then(data => {
+          const administrativeCode = data.code;
+          document.getElementById("weatherIframe").src = `https://www.weather.go.kr/w/index.do?admCode=${administrativeCode}`;
+        })
+        .catch(error => {
+          console.error("Error fetching administrative code:", error);
+        });
+    }
+  </script>
+</body>
+</html>

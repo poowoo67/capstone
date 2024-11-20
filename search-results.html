@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>검색 결과</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- 헤더 -->
+  <header>
+    <nav class="navbar">
+      <ul class="nav-left">
+        <li><a href="index.html">홈</a></li>
+        <li><a href="questions.html">질문 게시판</a></li>
+      </ul>
+      <ul class="nav-right">
+        <li><a href="login.html">로그인</a></li>
+        <li><a href="signup.html">회원가입</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- 검색 결과 -->
+  <div class="search-bar">
+    <input type="text" placeholder="검색어를 입력하세요">
+    <button onclick="search()">검색</button>
+  </div>
+
+<!-- 검색 결과 제목 -->
+<h2 id="search-heading">검색 결과</h2>
+
+<!-- 검색 결과 내용 (검색된 항목들을 여기에 표시) -->
+<div id="search-results">
+  <p>여기에 검색 결과가 표시됩니다.</p>
+</div>
+
+<!-- 퀴즈와 영상 섹션 -->
+<!-- search-results.html -->
+<section id="quizNVideo">
+  <div class="results-sections">
+    <!-- 관련 퀴즈 섹션 -->
+    <div class="quiz-section">
+      <h3>추천 퀴즈</h3>
+      <a id="recommended-quiz" href="#">관련 퀴즈로 이동</a>
+    </div>
+
+    <!-- 관련 영상 섹션 -->
+    <div class="video-section">
+      <h3>추천 영상</h3>
+      <video id="recommended-video" controls></video>
+    </div>
+  </div>
+</section>
+
+<script>
+  // 검색어에 따라 관련된 영상과 퀴즈 경로를 가져오기 위한 예시 데이터
+  const videos = {
+    "1": "videos/video1.mp4",
+    "2": "videos/video2.mp4",
+    "3": "videos/video3.mp4",
+    // 추가 비디오 경로
+  };
+
+  const quizzes = {
+    "1": "quizPage.html?quiz=1",
+    "2": "quizPage.html?quiz=2",
+    "3": "quizPage.html?quiz=3",
+    // 추가 퀴즈 경로
+  };
+
+  const searchedQuery = new URLSearchParams(window.location.search).get("query");
+
+  // 관련 영상 설정
+  if (searchedQuery && videos[searchedQuery]) {
+    document.getElementById("recommended-video").src = videos[searchedQuery];
+  }
+
+  // 관련 퀴즈 링크 설정
+  if (searchedQuery && quizzes[searchedQuery]) {
+    document.getElementById("recommended-quiz").href = quizzes[searchedQuery];
+  }
+</script>
+
+<script>
+  // URL에서 검색어를 받아와서 제목과 헤딩을 업데이트
+  const urlParams = new URLSearchParams(window.location.search);
+  const query = urlParams.get('query'); // ?query=검색어 형식으로 전달
+
+  if (query) {
+    document.title = `'${query}'에 대한 검색 결과`;
+    document.getElementById('search-heading').textContent = `'${query}'에 대한 검색 결과`;
+  }
+</script>
+</body>
+</html>
+
+
+  <script src="js/main.js"></script>
+</body>
+</html>
